@@ -20,7 +20,7 @@ Create a filesystem with 5MB size:
 Format the filesystem:
 `pintos -- -f -q`
 
-Copy mkdir program to the filesystem:
+Copy cat program to the filesystem:
 `pintos -p ../../examples/cat -a cat -- -q`
 
 Copy echo program to the filesystem:
