@@ -59,6 +59,8 @@ python pintos_manager.py --start
    - The `pintos` Docker image (must exist from previous `--build`)
    - Your local `./pintos/` directory mounted to `/home/me/pintos` inside the container
    - A bash shell for interactive development
+3. This shell is referred in the remaining of this wiki as the docker shell or the docker container shell.
+   - This shell has an environment ( the docker container ) with the necessary packages to build and run pintos
 
 ### Options
 
