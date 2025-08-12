@@ -17,21 +17,12 @@
 - Dependencies:
   - Docker
   - Git
-## Build the docker container:
-  ```bash
-  # In the project directory of this repo (Assignments-2025)
-  docker build . -t pintos 
-  ```
-# # Run the docker container with the pintos subvolume
-- git clone https://github.com/CS-F372-OS/pintos
-- Run the docker container with the pintos subvolume:
-  ```bash
-  docker run -it --rm --name pintos --mount type=bind,source=/absolute/path/to/pintos,target=/home/me/pintos pintos bash
-  ```
-
-> You need to provide the correct path to the pintos repo for the above command to work, `type` refers to the path in your computer's file system, `target` refers to where it will be mounted inside the docker container and doesn't need to be touched. you only need to change the `source` path to the absolute path of your cloned pintos repo.
+## Creating the Docker Container
+- `git clone https://github.com/CS-F372-OS/pintos` - #TODO do we need to submodule this?
+- Refer to the [Pintos Manager](wiki/pintos_manager.md) for managing the Docker container.
 
 ## Building Pintos
+- In the **docker shell**
 ```bash
 cd pintos/src/threads 
 make
@@ -65,3 +56,7 @@ Boot complete.
   pintos -- -h 
   ```
 - Anything that comes before the `--` is for the emulator, and anything that comes after is for the Pintos kernel.
+
+
+# Working with the Source Code
+- Refer to [Source Code](wiki/source_code.md) for details on how to work with the Pintos source code.
