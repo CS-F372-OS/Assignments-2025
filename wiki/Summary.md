@@ -2,8 +2,8 @@
 
 * Getting Started
   * [Cloning the Repository](./cloning_the_repo.md)
-  * [Pintos](./pintos.md)
   * [Pintos Manager Script](./pintos_manager.md)
+  * [Running Pintos](./pintos.md)
 * Assignment 1: Shell Enhancements
   * [Introduction to Shell Programming](./introduction_to_shell.md)
   * [Environment Setup](./assignment_1_environment_setup.md)

@@ -1,25 +1,10 @@
-# Index
-- [Introduction](#introduction)
-- [Getting Started](#getting-started)
-- [Running Pintos commands](#running-pintos-commands)
+# Running Pintos
 
-
-
-
-
-# Introduction
-#TODO: @ass
-
-
-
-
-# Getting Started
-- Dependencies:
-  - Docker
-  - Git
-## Creating the Docker Container
-- `git clone https://github.com/CS-F372-OS/pintos` - #TODO do we need to submodule this?
-- Refer to the [Pintos Manager](wiki/pintos_manager.md) for managing the Docker container.
+## Start the container
+```bash
+python pintos_manager.py --start
+```
+- You will enter the docker shell
 
 ## Building Pintos
 - In the **docker shell**
@@ -49,7 +34,7 @@ Boot complete.
 - [How did the docker commands work?](https://docs.docker.com/reference/dockerfile/)
 
 
-# Running Pintos commands
+## Running Pintos commands
 - To run Pintos commands, you need to be in the `pintos/src/threads/build` directory.
 - To run pintos commands, add a -- before the command you want to run. For example, to run the help command, you would use:
   ```bash
@@ -58,5 +43,5 @@ Boot complete.
 - Anything that comes before the `--` is for the emulator, and anything that comes after is for the Pintos kernel.
 
 
-# Working with the Source Code
+## Working with the Source Code
 - Refer to [Source Code](wiki/source_code.md) for details on how to work with the Pintos source code.
