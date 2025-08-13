@@ -59,9 +59,10 @@ $ touch newfile.txt
 $ ls
 newfile.txt
 $ touch existingfile.txt
-(updates timestamp)
+touch: updated existingfile.txt
 $ touch file1.txt file2.txt
-(creates both files)
+touch: created file1.txt
+touch: created file2.txt
 ```
 
 ## Task 3: Add Output Redirection
