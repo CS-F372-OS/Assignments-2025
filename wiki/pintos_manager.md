@@ -51,6 +51,13 @@ Builds the Docker image from the local Dockerfile.
 python pintos_manager.py --build
 ```
 
+**Note (Mac Apple Silicon - M1/M2/M3/M4):** Docker defaults to building ARM images on Apple Silicon. Pintos expects an x86_64 (amd64) environment. Before running the build on Apple Silicon, set the default platform:
+
+```bash
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+python pintos_manager.py --build
+```
+
 **What it does:**
 - Looks for `Dockerfile` in the current directory
 - Builds a Docker image tagged as `pintos`
@@ -110,11 +117,18 @@ The script includes comprehensive error checking:
 
 ## Manual Commands (Alternative to Script)
 
-If you prefer not to use the script, you can run these commands manually:
+If you're using `pintos_manager.py`, you don't need this section. These are the exact commands the manager runs under the hood. If you prefer not to use the script, you can run them manually:
 
 ### Build Docker Image
 ```bash
 # Equivalent to: python pintos_manager.py --build
+docker build . -t pintos
+```
+
+Mac (Apple Silicon) users should set the platform before building:
+
+```bash
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
 docker build . -t pintos
 ```
 

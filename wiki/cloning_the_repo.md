@@ -44,7 +44,7 @@ Navigate to the temporary directory and push to your private repository:
 cd assignments-public-temp
 
 # If you pull/push over HTTPS
-git push https://github.com/<USERNAME>/CSF372_OS_2025_GRP_<X>.git main
+git push https://github.com/<USERNAME>/CSF372_OS_2025_GRP_<X>.git main --force
 
 # If you pull/push over SSH
 git push git@github.com:<USERNAME>/CSF372_OS_2025_GRP_<X>.git main
