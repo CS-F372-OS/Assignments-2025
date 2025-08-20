@@ -20,3 +20,4 @@
     * [Memory Allocation](./memory-allocation.md)
     * [Virtual Addresses](./virtual-addresses.md)
     * [Page Table](./page-table.md)
+* [Asking Questions](./how_to_ask.md)
