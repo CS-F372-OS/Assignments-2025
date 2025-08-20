@@ -2,44 +2,44 @@
 
 ## Why This Matters: Get Help Faster
 
-• **Good questions get answered in minutes**
-• **Poor questions get ignored or require endless back-and-forth**
-• **Time is limited - make yours count**
-• **Clear questions help others with the same problem**
+- **Good questions get answered in minutes**
+- **Poor questions get ignored or require endless back-and-forth**
+- **Time is limited - make yours count**
+- **Clear questions help others with the same problem**
 
 ## Before Asking: The 5-Minute Rule
 
 ### Do This First (Saves Everyone Time)
-• **Try debugging yourself**: Add printf statements, check for typos
-• **Read error messages carefully**: They often tell you exactly what's wrong
-• **Check documentation**: Man pages, references, available materials
-• **Search forums**: Your question might already be answered
-• **Attempt the problem**: Show specific issues, not entire tasks
+- **Try debugging yourself**: Add printf statements, check for typos
+- **Read error messages carefully**: They often tell you exactly what's wrong
+- **Check documentation**: Man pages, references, available materials
+- **Search forums**: Your question might already be answered
+- **Attempt the problem**: Show specific issues, not entire tasks
 
 ### Red Flags That Get Questions Ignored
-• "My code doesn't work" (too vague)
-• Screenshot of code (can't copy/paste to test)
-• "I haven't tried anything yet"
-• No error message included
-• Asking for complete solutions without showing effort
+- "My code doesn't work" (too vague)
+- Screenshot of code (can't copy/paste to test)
+- "I haven't tried anything yet"
+- No error message included
+- Asking for complete solutions without showing effort
 
 ## Question Structure: What's Needed for Fast Answers
 
 ### Start With Context (One sentence each)
-• **What you're working on**: "Implementing a linked list insertion function"
-• **Environment**: "GCC 9.4 on Ubuntu 20.04"
-• **Goal**: "Trying to insert nodes in sorted order"
+- **What you're working on**: "Implementing a linked list insertion function"
+- **Environment**: "GCC 9.4 on Ubuntu 20.04"
+- **Goal**: "Trying to insert nodes in sorted order"
 
 ### Describe the Problem Clearly
-• **What you expected**: "Should insert 5 between 3 and 7"
-• **What actually happens**: "Segmentation fault on line 23"
-• **Include exact error message**: Copy/paste the full error as text or link to a pastebin site: [pastebin](https://pastebin.com/), [mystbin](https://mystb.in/), [laravel](https://paste.laravel.io/)
+- **What you expected**: "Should insert 5 between 3 and 7"
+- **What actually happens**: "Segmentation fault on line 23"
+- **Include exact error message**: Copy/paste the full error as text or link to a pastebin site: [pastebin](https://pastebin.com/), [mystbin](https://mystb.in/), [laravel](https://paste.laravel.io/)
 
 ### Show Your Code (The Right Way)
-• **Copy and paste as text** - never screenshots
-• **Include only relevant parts** - not your entire 500-line program
-• **Make it runnable** - include necessary headers and sample data
-• **Point to the problem line**: "Error happens in the while loop"
+- **Copy and paste as text** - never screenshots
+- **Include only relevant parts** - not your entire 500-line program
+- **Make it runnable** - include necessary headers and sample data
+- **Point to the problem line**: "Error happens in the while loop"
 
 ## The Magic Formula: Minimal Example
 
@@ -70,10 +70,10 @@ void insert_sorted(Node** head, int value) {
 ```
 
 ### Why This Works
-• **Code can be copied and compiled immediately**
-• **Problem is isolated** to specific function
-• **Shows understanding of the goal**
-• **Takes 30 seconds to spot issue**
+- **Code can be copied and compiled immediately**
+- **Problem is isolated** to specific function
+- **Shows understanding of the goal**
+- **Takes 30 seconds to spot issue**
 
 ## Common Question Types: Templates
 
@@ -108,18 +108,18 @@ void insert_sorted(Node** head, int value) {
 ## What NOT to Ask
 
 ### Questions That Get Ignored
-• "Can you check my entire program?"
-• "Is this right?" (without specific concern)
-• "How do I implement X?" (no attempt shown)
-• "My code has bugs somewhere"
-• "Can you debug this for me?"
+- "Can you check my entire program?"
+- "Is this right?" (without specific concern)
+- "How do I implement X?" (no attempt shown)
+- "My code has bugs somewhere"
+- "Can you debug this for me?"
 
 ### Ask This Instead
-• "Line 23 gives segfault - why?"
-• "Does my pointer logic look correct?"
-• "Tried malloc but getting wrong values"
-• "Found issue on line 15, but don't understand why"
-• "Can you explain why this specific line fails?"
+- "Line 23 gives segfault - why?"
+- "Does my pointer logic look correct?"
+- "Tried malloc but getting wrong values"
+- "Found issue on line 15, but don't understand why"
+- "Can you explain why this specific line fails?"
 
 ## C-Specific Best Practices
 
@@ -165,7 +165,6 @@ Before posting, ask yourself:
 - [ ] **Did I include error messages/output?**
 - [ ] **Did I show what I tried?**
 - [ ] **Is this about a specific issue, not requesting a full solution?**
-
 
 ## References 
 - The thoughts of [Joel Tony](https://jaytau.com) - Please contact for questions.
