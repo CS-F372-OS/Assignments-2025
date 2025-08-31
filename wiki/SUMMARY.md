@@ -4,6 +4,7 @@
   * [Git Basics](./git_basics.md)
   * [Cloning the Repository](./cloning_the_repo.md)
   * [Setting up pintos](./pintos_manager.md)
+  * [Debugging with GDB](./gdb.md)
   * [Submitting the Assignment](./submitting.md)
 * Assignment 1: Shell Enhancements
   * [Introduction to Shell Programming](./introduction_to_shell.md)
