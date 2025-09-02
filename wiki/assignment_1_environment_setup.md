@@ -34,6 +34,7 @@ make
 ```
 
 This command compiles the user program support, which includes the ability to run user programs and handle file system operations.
+- If this step errors out, run step 2 first and then run this step.
 
 ### Step 2: Build the examples directory
 

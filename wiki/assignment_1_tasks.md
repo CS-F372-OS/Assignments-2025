@@ -64,9 +64,9 @@ The echo command should:
 Your implementation should pass these test cases:
 - **echo-none**: No arguments - should exit successfully
 - **echo-multi**: Multiple arguments, mixed content, many arguments
-- **echo-mixed**: Arguments with leading/trailing whitespace
 - **echo-newlines**: Arguments containing newline and carriage return characters
 - **echo-dashes**: Arguments starting with dashes
+- **touch-multiple**: Touch multiple files in one command
 
 ### Expected Behavior
 Refer to the `.ck` files in the `tests/shell` folder.
