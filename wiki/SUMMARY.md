@@ -10,6 +10,10 @@
   * [Introduction to Shell Programming](./introduction_to_shell.md)
   * [Environment Setup](./assignment_1_environment_setup.md)
   * [Tasks](./assignment_1_tasks.md)
+* Assignment 2: CPU Scheduling
+  * [Tasks](./assignment_2_tasks.md)
+  * [Description of testcases](./assignment_2_tests.md)
+  * [FAQ](./FAQs.md)
 * Appendix
   * [Why Docker](./docker_why.md)
   * [Testing](./testing.md)
