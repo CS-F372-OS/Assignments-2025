@@ -92,8 +92,6 @@ Your implementation should pass the **touch-create** test:
 $ touch newfile.txt
 newfile.txt: created
 touch: exit(0)
-$ ls
-newfile.txt
 $ cat newfile.txt
 (empty file)
 ```

@@ -108,3 +108,6 @@ You need not provide any interface to allow a thread to directly modify other th
   * `threads/interrupt.c`
 
   Note that you may choose a different implementation strategy that requires you to not modify all of these files, or that requires you to modify additional files and/or create new files. As long as your implementation meets the project requirements and passes the test cases, you are free to choose your own design.
+
+### Credits
+- This assignment was forked from [PKU's OS Course](pkuflyingpig.gitbook.io/pintos)
