@@ -19,7 +19,7 @@ Before starting the assignment, make sure you have the latest version of the `ma
 
 ```bash
 git checkout main
-git pull origin main
+git pull public main
 ```
 
 Next, create a new branch for this assignment:
