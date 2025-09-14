@@ -7,6 +7,37 @@ Before starting this assignment, we recommend you to read the following document
 * [Introduction to Threads](https://pkuflyingpig.gitbook.io/pintos/appendix/reference-guide/threads)
 * [Syncronization using Locks](https://pkuflyingpig.gitbook.io/pintos/appendix/reference-guide/synchronization#locks) (Note that other synchronization primitives like Semaphores, Monitors, etc. are not required for this assignment).
 
+{% hint style="success" %}
+<mark style="color:green;">**Important Note**</mark>
+
+<mark style="color:green;">**You DO NOT need the changes made in Assignment 1 (Shell Assignment) for this assignment.
+Hence, there is no need to carry over the changes made in that assignment.**</mark>
+{% endhint %}
+
+## Set-up
+Before starting the assignment, make sure you have the latest version of the `main` branch of the repository. You can do this by running the following commands in your `Assignments-2025` directory:
+
+```bash
+git checkout main
+git pull origin main
+```
+
+Next, create a new branch for this assignment:
+
+```bash
+git checkout -b scheduler
+```
+
+Please ensure that you have named the branch `scheduler`. This is important for our evaluations and consistency across submissions.
+
+Make sure that you are now on the `scheduler` branch by running:
+
+```bash
+git branch
+```
+
+If you see `* scheduler` in the output, you are on the correct branch. Now, you are ready to start working on the assignment.
+
 ## Task 1: Priority Scheduling in Pintos
 
 

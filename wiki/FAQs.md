@@ -28,7 +28,7 @@ We don't recommend changing this value, because any changes are likely to cause 
 
 **How do I run the tests?**
 
-See section [Testing](../../getting-started/debug-and-test/testing).
+See section [Testing](https://cs-f372.gitbook.io/cs-f372-docs/appendix/testing) in the [Appendix](https://cs-f372.gitbook.io/cs-f372-docs/appendix) section of this page.
 
 #### **How do interrupts get re-enabled in the new thread following `schedule()`?**
 
