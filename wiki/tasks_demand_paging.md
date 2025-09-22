@@ -1,7 +1,3 @@
-Here’s the updated **`tasks.md`** with explicit tasks for implementing **demand paging during page faults**, integrated with your existing content:
-
----
-
 # Demand Paging Assignment - Tasks
 
 ## 1. Setup and Branching
@@ -96,21 +92,39 @@ Handles **swap space management**.
 ### 3.2 Page Management (`page.c`)
 
 * Implement `page_for_addr()` to look up pages in the hash table.
-
 * Implement `page_deallocate()` to remove pages safely.
-
 * Implement **demand paging during page faults**:
 
   1. Modify `page_fault()` in `userprog/exception.c` to call `page_in()` only for **not-present pages**.
+  2. Ensure that page faults for **read-only violations** or **kernel accesses** are handled by `kill()` (do not demand page them).
 
-* Ensure that page faults for **read-only violations** or **kernel accesses** are handled by `kill()` (do not demand page them).
+---
 
+## 4. Testing
 
-## 4. References
+To verify your implementation:
+
+1. **Build the VM tools**:
+
+```bash
+cd pintos/src/vm
+make
+```
+
+2. **Run the test suite**:
+
+```bash
+cd build
+make check
+```
+
+3. Review the output of `tests/` to ensure that **demand paging** and **page fault handling** pass all relevant tests.
+
+---
+
+## 5. References
 
 * [Memory Allocation](https://pkuflyingpig.gitbook.io/pintos/appendix/reference-guide/memory-allocation)
 * [Virtual Addresses](https://pkuflyingpig.gitbook.io/pintos/appendix/reference-guide/virtual-addresses)
 * [Page Table](https://pkuflyingpig.gitbook.io/pintos/appendix/reference-guide/page-table)
 * [Hash Table](https://pkuflyingpig.gitbook.io/pintos/appendix/reference-guide/hash-table)
-
----
