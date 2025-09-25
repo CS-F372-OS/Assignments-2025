@@ -45,6 +45,15 @@ page_for_addr (const void *address)
   // TODO: Use hash_find to look it up
   // TODO: Return the found vm_page (or NULL if not found)
 
+
+   /* -We need to determine if the program is attempting to access the stack.
+         -First, we ensure that the address is not beyond the bounds of the stack space (1 MB in this
+          case).
+         -As long as the user is attempting to acsess an address within 32 bytes (determined by the space
+          needed for a PUSHA command) of the stack pointers, we assume that the address is valid. In that
+          case, we should allocate one more stack page accordingly.
+      */
+
   return NULL;
 }
 
