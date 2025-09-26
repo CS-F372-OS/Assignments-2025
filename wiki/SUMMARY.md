@@ -14,6 +14,12 @@
   * [Tasks](./assignment_2_tasks.md)
   * [Description of testcases](./assignment_2_tests.md)
   * [FAQ](./FAQs.md)
+* Assignment 3: Demand Paging
+  * [Introduction](./demand_paging_intro.md)
+  * [Tasks](./tasks_demand_paging.md)
+* Bootloader
+  * [Introduction](./bootloader.md)
+  * [Takehome](./bootloader_takehome.md)
 * Appendix
   * [Why Docker](./docker_why.md)
   * [Testing](./testing.md)
