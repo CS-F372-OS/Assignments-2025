@@ -128,3 +128,52 @@ make check
 * [Virtual Addresses](https://pkuflyingpig.gitbook.io/pintos/appendix/reference-guide/virtual-addresses)
 * [Page Table](https://pkuflyingpig.gitbook.io/pintos/appendix/reference-guide/page-table)
 * [Hash Table](https://pkuflyingpig.gitbook.io/pintos/appendix/reference-guide/hash-table)
+
+---
+
+## Known Issues and Fixes
+## Critical Bug #1: Uninitialized Sector Field
+**Location:** `page_allocate()` in `vm/page.c` and `load_segment()` in `userprog/process.c`
+
+**The Problem:**
+- The `p->sector` field in page structures was never initialized
+- Defaulted to `0` instead of the expected `(block_sector_t)-1` (indicating "not in swap")
+- This caused `do_page_in()` to incorrectly route ALL file-backed pages to swap loading instead of file loading
+
+**The Effect:**
+- Executable pages tried to load from swap sector 0 (garbage data)
+- All instruction pages came up as all zeros (`00 00 00 00`)
+- Programs would page fault immediately after code page loading
+
+**The Fix:**
+```c
+// In page_allocate() and load_segment():
+p->sector = (block_sector_t)-1; // Explicitly mark as "not in swap"
+```
+
+## Critical Bug #2: Corrupted File Metadata
+**Location:** File offset and byte count fields in page structures
+
+**The Problem:**
+- File offsets showed values like `17592186044416` (should be small file offsets)
+- Byte counts showed values like `47244640255` (should be ≤ 4096)
+- `file_read_at()` returned negative byte counts (`-4294963200`)
+
+**The Evidence:**
+From debug output:
+```
+load_segment: file_offset=17592186044416, file_bytes=3222307852
+do_page_in: offset=17592186044416, bytes=47244640255
+Actually read -4294963200 bytes
+```
+
+**The Workaround:**
+Implemented forced full-page reading when metadata appears corrupted:
+```c
+size_t bytes_to_read = PGSIZE; // Just read a full page
+if (p->file_bytes > 0 && p->file_bytes <= PGSIZE) {
+bytes_to_read = p->file_bytes; // Use original if it looks sane
+}
+```
+
+These bugs completely mask whether demand paging is working correctly. Students can implement perfect page fault handling, frame allocation, and TLB management, but the system will still fail due to these underlying issues.
