@@ -17,6 +17,8 @@
 * Assignment 3: Demand Paging
   * [Introduction](./demand_paging_intro.md)
   * [Tasks](./tasks_demand_paging.md)
+* Assignment 4: IPC
+ * [Intro](./wiki/ipc.md)
 * Bootloader
   * [Introduction](./bootloader.md)
   * [Takehome](./bootloader_takehome.md)
