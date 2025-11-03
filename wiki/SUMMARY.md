@@ -22,6 +22,8 @@
 * Bootloader
   * [Introduction](./bootloader.md)
   * [Takehome](./bootloader_takehome.md)
+* Drivers
+  * [Tasks](./driver.md)
 * Appendix
   * [Why Docker](./docker_why.md)
   * [Testing](./testing.md)
