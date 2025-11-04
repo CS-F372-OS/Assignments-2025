@@ -133,7 +133,7 @@ make check
 
 ## Known Issues and Fixes
 ## Critical Bug #1: Uninitialized Sector Field
-**Location:** `page_allocate()` in `vm/page.c` and `load_segment()` in `userprog/process.c`
+**Location:** `page_allocate()` in `vm/page.c` in `userprog/process.c`
 
 **The Problem:**
 - The `p->sector` field in page structures was never initialized
