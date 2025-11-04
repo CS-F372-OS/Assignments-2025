@@ -147,7 +147,7 @@ make check
 
 **The Fix:**
 ```c
-// In page_allocate() and load_segment():
+// In page_allocate():
 p->sector = (block_sector_t)-1; // Explicitly mark as "not in swap"
 ```
 
