@@ -286,5 +286,5 @@ Kernel modules must be compiled against the headers and configuration of the spe
 6.  **Cleanup**
     * Unload the module and remove the device node.
 
-7.  **Analysis *(Think...)* **
+7.  *(Think...)*
     * The `device_open` function described above implements a simple single-open policy. Why might a device driver need to restrict access to a single process at a time? What are the roles of `try_module_get()` and `module_put()` in the open/release functions, and why are they critical for module stability?
