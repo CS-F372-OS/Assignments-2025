@@ -1,10 +1,5 @@
 # Linux Device Driver Assignment
 
-### BITS Pilani K.K. Birla Goa Campus
-
-**Course:** Operating Systems (CS F372)  
-**Instructor:** Arnab K. Paul
-
 -----
 
 ## Important Notes
