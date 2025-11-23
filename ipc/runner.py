@@ -109,17 +109,13 @@ def run_test(test_config, pipe_output=False):
     
     # Start server
     print("Starting server...")
-    
-    if pipe_output:
-        # Direct pipe mode - no buffering
-        server_process = subprocess.Popen(['./build/server'])
-    else:
-        # Buffered mode for chronological sorting
-        server_process = subprocess.Popen(['./build/server'],
-                                         stdout=subprocess.PIPE,
-                                         stderr=subprocess.STDOUT,
-                                         text=True,
-                                         bufsize=1)
+
+    # Always capture output for verification
+    server_process = subprocess.Popen(['./build/server'],
+                                     stdout=subprocess.PIPE,
+                                     stderr=subprocess.STDOUT,
+                                     text=True,
+                                     bufsize=1)
     
     # Give server time to initialize
     time.sleep(1)
@@ -128,46 +124,15 @@ def run_test(test_config, pipe_output=False):
     client_processes = []
     for i in range(num_clients):
         print(f"Starting client {i}...")
-        if pipe_output:
-            # Direct pipe mode - no buffering
-            client_proc = subprocess.Popen(['./build/client', str(i)])
-        else:
-            # Buffered mode for chronological sorting
-            client_proc = subprocess.Popen(['./build/client', str(i)],
-                                          stdout=subprocess.PIPE,
-                                          stderr=subprocess.STDOUT,
-                                          text=True,
-                                          bufsize=1)
+        # Always capture output for verification
+        client_proc = subprocess.Popen(['./build/client', str(i)],
+                                      stdout=subprocess.PIPE,
+                                      stderr=subprocess.STDOUT,
+                                      text=True,
+                                      bufsize=1)
         client_processes.append(client_proc)
         time.sleep(0.2)  # Small delay between client starts
     
-    # If pipe mode, just wait for processes to complete
-    if pipe_output:
-        print("\n" + "="*60)
-        print("DIRECT OUTPUT MODE (real-time, no buffering):")
-        print("="*60 + "\n")
-        
-        # Wait for all clients to complete
-        for proc in client_processes:
-            proc.wait()
-        
-        print("\nAll clients finished. Shutting down server...\n")
-        time.sleep(1)
-        server_process.terminate()
-        server_process.wait(timeout=2)
-        
-        print("\n" + "="*60)
-        print("TEST COMPLETED")
-        print("="*60)
-        
-        # Skip verification in pipe mode
-        cleanup_message_queues()
-        return True
-    
-    print("\n" + "="*60)
-    print("COLLECTING OUTPUT (will print in chronological order)...")
-    print("="*60 + "\n")
-
     # Collect all output with timestamps
     collected_lines = []
 
@@ -178,6 +143,17 @@ def run_test(test_config, pipe_output=False):
         outputs[proc.stdout] = (f"CLIENT{i}", proc)
 
     active_processes = set(outputs.values())
+
+    # If pipe mode, print live output
+    if pipe_output:
+        print("\n" + "="*60)
+        print("DIRECT OUTPUT MODE (real-time):")
+        print("="*60 + "\n")
+    
+    if not pipe_output:
+        print("\n" + "="*60)
+        print("COLLECTING OUTPUT (will print in chronological order)...")
+        print("="*60 + "\n")
 
     while active_processes:
         # Check which processes have output ready
@@ -194,8 +170,11 @@ def run_test(test_config, pipe_output=False):
                 line = fd.readline()
                 if line:
                     label, proc = outputs[fd]
-                    # Collect line with label for later sorting
+                    # Collect line with label for later sorting/verification
                     collected_lines.append((label, line.rstrip()))
+                    # In pipe mode, print immediately
+                    if pipe_output:
+                        print(f"[{label:8s}] {line.rstrip()}")
                 else:
                     # Process finished
                     label, proc = outputs[fd]
@@ -209,21 +188,19 @@ def run_test(test_config, pipe_output=False):
         # Check if all clients are done
         all_clients_done = all(proc.poll() is not None for proc in client_processes)
         if all_clients_done:
-            collected_lines.append(("SYSTEM", "\nAll clients finished. Shutting down server..."))
+            shutdown_msg = "\nAll clients finished. Shutting down server..."
+            collected_lines.append(("SYSTEM", shutdown_msg))
+            if pipe_output:
+                print(shutdown_msg)
             time.sleep(1)
             server_process.terminate()
             break
-    
+
     # Wait for all processes to complete
     for proc in client_processes:
         proc.wait()
 
     server_process.wait(timeout=2)
-
-    # Sort collected lines by timestamp and print
-    print("\n" + "="*60)
-    print("EXECUTION LOG (CHRONOLOGICAL ORDER):")
-    print("="*60 + "\n")
 
     # Parse timestamp from line format: "HH:MM:SS.mmm message"
     def parse_timestamp(line):
@@ -249,15 +226,22 @@ def run_test(test_config, pipe_output=False):
     # Sort timestamped lines
     timestamped_lines.sort(key=lambda x: x[0])
 
-    # Print sorted timestamped lines
-    for ts, label, line in timestamped_lines:
-        print(f"[{label:8s}] {line}")
+    # In non-pipe mode, print sorted chronological output
+    if not pipe_output:
+        # Sort collected lines by timestamp and print
+        print("\n" + "="*60)
+        print("EXECUTION LOG (CHRONOLOGICAL ORDER):")
+        print("="*60 + "\n")
 
-    # Print non-timestamped lines at the end
-    if non_timestamped_lines:
-        print("\n--- Messages without timestamps ---")
-        for label, line in non_timestamped_lines:
+        # Print sorted timestamped lines
+        for ts, label, line in timestamped_lines:
             print(f"[{label:8s}] {line}")
+
+        # Print non-timestamped lines at the end
+        if non_timestamped_lines:
+            print("\n--- Messages without timestamps ---")
+            for label, line in non_timestamped_lines:
+                print(f"[{label:8s}] {line}")
 
     print("\n" + "="*60)
     print("TEST COMPLETED")
